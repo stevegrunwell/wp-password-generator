@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: SteveGrunwell
-Donate link: http://stevegrunwell.com/
+Donate link: http://stevegrunwell.com/wp-password-generator.php
 Tags: password, password generator, users
 Requires at least: 3.0.1
 Tested up to: 3.0.1
-Stable tag: 1.0
+Stable tag: 1.1
 
 Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
 
@@ -13,7 +13,7 @@ Generates a random password (via Ajax) for new users created through wp-admin/us
 
 When administrators create new users through the WordPress admin interface (wp-admin/user-new.php), they are forced to come up with a password for the new user. The administrator is faced with a choice: use a separate password generator app or waste precious time coming up with a clever password only one person will ever see.
 
-WP-Password Generator takes the hassle out of creating new or insecure passwords. Simply click "Generate Password" and your user has a unique, eight character password.
+WP-Password Generator takes the hassle out of creating new or insecure passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password.
 
 Please note that this plugin does require javascript to be enabled in order to work. Without javascript, the generator will simply be unavailable.
 
@@ -31,16 +31,29 @@ Please note that this plugin does require javascript to be enabled in order to w
 
 WP-Password Generator non-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to '/wp-content/plugins/wp-password-generator/wp-password-generator.php', which returns a randomly-generated password.
 
-By default, the script creates eight-character passwords using alpha-numeric (both upper and lowercase letters) and select (!@#$%^&*()) characters, with no individual character appearing more than once in the password.
+By default, the script creates 7-16 character passwords using alpha-numeric (both upper and lowercase letters) and select (!@#$%^&*()) characters, with no individual character appearing more than once in the password.
 
 = Is there anything to configure? =
 
-No. Version 1.0 of this plug-in does not include a configuration menu. If you'd like to modify the parameters of the password generator, you'll need to edit the wp_password_generator_generate() function in wp-password-generator.php.
+No. Version 1.1 of this plug-in does not include a configuration menu. If you'd like to modify the parameters of the password generator, you'll need to edit the wp_password_generator_generate() function in wp-password-generator.php.
 
 The only parameters to change are $len (length of the password) and $allowed (all allowed characters).
 
 
 == Changelog ==
 
+= 1.1 =
+* Passwords now vary between 7 and 16 characters
+
 = 1.0 =
 * First public version of the plugin
+
+== Upgrade Notice ==
+
+= 1.1 =
+Generated passwords now vary between 7 and 16 characters in length, rather than the eight-character limit of version 1.0
+
+
+== Arbitrary section ==
+
+Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in.

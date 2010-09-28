@@ -1,7 +1,7 @@
 /*
 	Plugin Name: WP-Password Generator
 	Plugin URI: http://stevegrunwell.com/wp-password-generator.php
-	Version: 1.0
+	Version: 1.1
 */
 
 (function($){
