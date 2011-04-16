@@ -3,8 +3,8 @@ Contributors: SteveGrunwell
 Donate link: http://stevegrunwell.com/wp-password-generator.php
 Tags: password, password generator, users
 Requires at least: 3.0.1
-Tested up to: 3.0.1
-Stable tag: 1.1
+Tested up to: 3.1.1
+Stable tag: 2.0
 
 Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
 
@@ -40,7 +40,21 @@ No. Version 1.1 of this plug-in does not include a configuration menu. If you'd 
 The only parameters to change are $len (length of the password) and $allowed (all allowed characters).
 
 
+== Screenshots ==
+
+1. The "Generate Password" button just above the strength indicator in /wp-admin/user-new.php
+
+
 == Changelog ==
+
+= 2.0 =
+* Clicking 'Generate Password' will also update the password strength indicator and automatically check the 'Send Password?' checkbox
+* Removed generator button from the user-edit screen as these passwords aren't sent to the user
+* Ajax call now uses admin-ajax for better support for non-standard WordPress installations
+* Better adherence to the WordPress coding standards
+* Updated the special thanks section of readme.txt
+* Counter in wp_password_generator_generate() will only increment if a character has been added to the password string
+* wp-password-generator.js now passes JSLint
 
 = 1.1 =
 * Passwords now vary between 7 and 16 characters
@@ -48,12 +62,16 @@ The only parameters to change are $len (length of the password) and $allowed (al
 = 1.0 =
 * First public version of the plugin
 
+
 == Upgrade Notice ==
+
+= 2.0 =
+The password strength indicator is now updated when a password is generated. Better support for non-standard WordPress instances. Removed generator from user-edit screen.
 
 = 1.1 =
 Generated passwords now vary between 7 and 16 characters in length, rather than the eight-character limit of version 1.0
 
 
-== Arbitrary section ==
+== Special Thanks ==
 
-Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in.
+Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress user pampfelimetten for suggesting the plugin hook into the strength indicator.
