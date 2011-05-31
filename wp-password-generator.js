@@ -12,7 +12,7 @@
 			$.post(ajaxurl, { action : 'generate_password' }, function(p){
 				$('#pass1, #pass2').val(p).trigger('keyup');
 				$('#password_generator_toggle kbd').html(p);
-			
+
 				/* Append the 'Show password' link and bind the click event */
 				if( $('#password_generator_toggle').length === 0 ){
 					$('#send_password').attr('checked', 'checked'); // Only do this the first time
@@ -23,7 +23,7 @@
 						});
 						return false;
 					});
-				}	
+				}
 			});
 			return false;
 		});

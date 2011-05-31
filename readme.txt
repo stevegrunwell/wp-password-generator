@@ -35,9 +35,7 @@ By default, the script creates 7-16 character passwords using alpha-numeric (bot
 
 = Is there anything to configure? =
 
-No. Version 2.1 of this plug-in does not include a configuration menu. If you'd like to modify the parameters of the password generator, you'll need to edit the wp_password_generator_generate() function in wp-password-generator.php.
-
-The only parameters to change are $len (length of the password) and $allowed (all allowed characters).
+No. Version 2.1 of this plug-in does not include a configuration menu. If you'd like to modify the parameters of the password generator, the allowed characters and min/max lengths are stored in the wp_options table (wp-password-generator-opts). This is updated behavior from previous versions where the characters were set within wp_password_generator_generate(); this new approach will store changes as future versions are released.
 
 
 == Screenshots ==
@@ -51,6 +49,7 @@ The only parameters to change are $len (length of the password) and $allowed (al
 = 2.1 =
 * Ability to show generated password beside the generate button
 * 'Send this password?' checkbox only auto-checked the first time a password is generated. Subsequent generations will not re-check this box.
+* Store permitted characters and min/max password lengths in the wp_options table to prevent them from being overridden in future updates
 * jQuery functions are wrapped to allow the $ shortcut while in no-conflict mode
 * Better adherence to WordPress code standards
 
