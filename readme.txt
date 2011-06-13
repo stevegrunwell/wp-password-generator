@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: SteveGrunwell
 Donate link: http://stevegrunwell.com/wp-password-generator
-Tags: password, password generator, users
+Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.0.1
 Tested up to: 3.1.3
-Stable tag: 2.1
+Stable tag: 2.2
 
 Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
 
@@ -29,13 +29,13 @@ Please note that this plugin does require javascript to be enabled in order to w
 
 = How does the plugin generate passwords? =
 
-WP-Password Generator non-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to '/wp-content/plugins/wp-password-generator/wp-password-generator.php', which returns a randomly-generated password.
+WP-Password Generator un-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to '/wp-content/plugins/wp-password-generator/wp-password-generator.php', which returns a randomly-generated password.
 
-By default, the script creates 7-16 character passwords using alpha-numeric (both upper and lowercase letters) and select (!@#$%^&*()) characters, with no individual character appearing more than once in the password.
+As of version 2.2, WP Password Generator calls the pluggable wp_generate_password() function (which is the same function WordPress uses to create new passwords for users who have clicked "Forgot password?"). This function can be overridden in a theme or plugin, if desired.
 
 = Is there anything to configure? =
 
-No. Version 2.1 of this plug-in does not include a configuration menu. If you'd like to modify the parameters of the password generator, the allowed characters and min/max lengths are stored in the wp_options table (wp-password-generator-opts). This is updated behavior from previous versions where the characters were set within wp_password_generator_generate(); this new approach will store changes as future versions are released.
+Not directly, but as of version 2.2 the plugin uses the pluggable wp_generate_password() function. If a developer chooses to override the function, the passwords created by the plugin will use the same methods and rules applied to passwords created through the "Forgot password?" tool. Minimum and maximum password lengths can also be set in the wp_options table (one row with the key of "wp-password-generator-opts"), though there is no dedicated settings page for these values (by default, passwords are between 7-16 characters).
 
 
 == Screenshots ==
@@ -45,6 +45,10 @@ No. Version 2.1 of this plug-in does not include a configuration menu. If you'd 
 
 
 == Changelog ==
+
+= 2.2 =
+* Use the pluggable wp_generate_password() function to handle password creation rather than WP Password Generator's internal function
+* Removed 'characters' key from the plugin settings
 
 = 2.1 =
 * Ability to show generated password beside the generate button
@@ -70,6 +74,9 @@ No. Version 2.1 of this plug-in does not include a configuration menu. If you'd 
 
 
 == Upgrade Notice ==
+
+= 2.2 =
+Password generation is now handled by the wp_generate_password() pluggable function so that both generated and "Lost password" requests are handled by the same function.
 
 = 2.1 =
 Ability to view generated passwords before submitting form. Only auto-check the 'Send password' option upon first generation.

@@ -3,13 +3,13 @@
 	Plugin Name: WP-Password Generator
 	Plugin URI: http://stevegrunwell.com/wp-password-generator
 	Description: Generates a random password when creating a new WP user
-	Version: 2.1
+	Version: 2.2
 	Author: Steve Grunwell
 	Author URI: http://stevegrunwell.com
 	License: GPL2
 */
 
-define('WP_PASSWORD_GENERATOR_VERSION', '2.1');
+define('WP_PASSWORD_GENERATOR_VERSION', '2.2');
 
 /**
  * Store the settings in a JSON-encoded array in the wp_options table
@@ -26,15 +26,15 @@ define('WP_PASSWORD_GENERATOR_VERSION', '2.1');
 function wp_password_generator_install(){
   $defaults = array(
     'version' => WP_PASSWORD_GENERATOR_VERSION,
-    'characters' => '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()',
     'min-length' => 7,
     'max-length' => 16
   );
 
   $opts = get_option('wp-password-generator-opts');
   if( $opts){
+    // Remove 'characters', which was only used in version 2.1. We'll use whatever is defined in wp_generate_password()
     if( isset($opts['characters']) ){
-      $defaults['characters'] = $opts['characters'];
+      unset($opts['characters']);
     }
     if( isset($opts['min-length']) && intval($opts['min-length']) > 0 ){
       $defaults['min-length'] = intval($opts['min-length']);
@@ -70,7 +70,7 @@ function wp_password_generator_load(){
 /**
  * Handle an Ajax request for a password, print response.
  *
- * Uses $len and $allowed to control the length and allowed characters (respectively)
+ * Uses wp_generate_password(), a pluggable function within the WordPress core
  *
  * @return bool (echoes password)
  * @package WordPress
@@ -78,25 +78,14 @@ function wp_password_generator_load(){
  * @since 1.0
  */
 function wp_password_generator_generate(){
-	$password = '';
 	$opts = get_option('wp-password-generator-opts', false);
-	if( !$opts ){
+	if( !$opts || $opts['version'] < WP_PASSWORD_GENERATOR_VERSION ){ // No options or an older version
 	  wp_password_generator_install();
 	  $opts = get_option('wp-password-generator-opts', false);
 	}
 	$len = mt_rand($opts['min-length'], $opts['max-length']); // Min/max password lengths
-	$allowed = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()'; // Available characters
-	$i = 0;
 
-	while( $i <= $len ){
-		$char = substr( $opts['characters'], mt_rand(0, strlen($opts['characters'])-1 ), 1 );
-		if( !strstr($password, $char) ){
-			$password .= $char;
-			$i++;
-		}
-	}
-
-	echo $password;
+	echo wp_generate_password($len, true, false);
 	return true;
 }
 
