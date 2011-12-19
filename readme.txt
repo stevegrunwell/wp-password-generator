@@ -2,9 +2,9 @@
 Contributors: SteveGrunwell
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
-Requires at least: 3.0.1
-Tested up to: 3.1.3
-Stable tag: 2.2
+Requires at least: 3.2
+Tested up to: 3.3
+Stable tag: 2.3
 
 Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
 
@@ -46,6 +46,10 @@ Not directly, but as of version 2.2 the plugin uses the pluggable wp_generate_pa
 
 == Changelog ==
 
+= 2.3 =
+* Now works in WordPress installations that don't use the standard `wp-content/` directory location
+* Improved javascript performance
+
 = 2.2 =
 * Use the pluggable wp_generate_password() function to handle password creation rather than WP Password Generator's internal function
 * Removed 'characters' key from the plugin settings
@@ -53,7 +57,7 @@ Not directly, but as of version 2.2 the plugin uses the pluggable wp_generate_pa
 = 2.1 =
 * Ability to show generated password beside the generate button
 * 'Send this password?' checkbox only auto-checked the first time a password is generated. Subsequent generations will not re-check this box.
-* Store permitted characters and min/max password lengths in the wp_options table to prevent them from being overridden in future updates
+* Store permitted characters and min/max password lengths in the `wp_options` table to prevent them from being overridden in future updates
 * jQuery functions are wrapped to allow the $ shortcut while in no-conflict mode
 * Better adherence to WordPress code standards
 
@@ -75,6 +79,9 @@ Not directly, but as of version 2.2 the plugin uses the pluggable wp_generate_pa
 
 == Upgrade Notice ==
 
+= 2.3 =
+Plugin will now work in WordPress installations where `wp-content/` has a different name or location. Scripting has been updated to work with newer versions of jQuery - version 2.3 is not suitable for WordPress versions below 3.2
+
 = 2.2 =
 Password generation is now handled by the wp_generate_password() pluggable function so that both generated and "Lost password" requests are handled by the same function.
 
@@ -90,4 +97,4 @@ Generated passwords now vary between 7 and 16 characters in length, rather than 
 
 == Special Thanks ==
 
-Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature.
+Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. Chris Van Patten (http://vanpattenmedia.com/) also deserves major props for assistance with version 2.3.

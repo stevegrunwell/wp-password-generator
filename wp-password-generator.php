@@ -3,13 +3,13 @@
 	Plugin Name: WP-Password Generator
 	Plugin URI: http://stevegrunwell.com/wp-password-generator
 	Description: Generates a random password when creating a new WP user
-	Version: 2.2
+	Version: 2.3
 	Author: Steve Grunwell
 	Author URI: http://stevegrunwell.com
 	License: GPL2
 */
 
-define('WP_PASSWORD_GENERATOR_VERSION', '2.2');
+define('WP_PASSWORD_GENERATOR_VERSION', '2.3');
 
 /**
  * Store the settings in a JSON-encoded array in the wp_options table
@@ -62,7 +62,7 @@ function wp_password_generator_install(){
  */
 function wp_password_generator_load(){
 	if( basename($_SERVER['PHP_SELF']) == 'user-new.php' ){
-		wp_enqueue_script('wp-password-generator', '/wp-content/plugins/wp-password-generator/wp-password-generator.js', array('jquery'), '2.1', true);
+		wp_enqueue_script('wp-password-generator', trailingslashit(plugins_url(basename(dirname(__FILE__)))) . 'wp-password-generator.js', array('jquery'), WP_PASSWORD_GENERATOR_VERSION, true);
 	}
 	return true;
 }
