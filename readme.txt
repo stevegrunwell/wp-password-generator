@@ -36,19 +36,19 @@ Please note that this plugin does require javascript to be enabled in order to w
 
 = How does the plugin generate passwords? =
 
-WP-Password Generator un-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to `/wp-content/plugins/wp-password-generator/wp-password-generator.php`, which returns a randomly-generated password.
+WP-Password Generator un-obtrusively injects a "Generate Password" button into /wp-admin/user-new.php. When the button is clicked, an Ajax call is fired off to /wp-content/plugins/wp-password-generator/wp-password-generator.php, which returns a randomly-generated password.
 
 As of version 2.2, WP Password Generator calls the pluggable `wp_generate_password()` function (which is the same function WordPress uses to create new passwords for users who have clicked "Forgot password?"). This function can be overridden in a theme or plugin, if desired (see "Can I change the way my passwords are generated?" below).
 
 = Is there anything to configure? =
 
-Not directly, but as of version 2.2 the plugin uses the pluggable `wp_generate_password()` function. If a developer chooses to override the function, the passwords created by the plugin will use the same methods and rules applied to passwords created through the "Forgot password?" tool. Minimum and maximum password lengths can also be set in the wp_options table (one row with the key of `wp-password-generator-opts`), though there is no dedicated settings page for these values (by default, passwords are between 7-16 characters).
+Not directly, but as of version 2.2 the plugin uses the pluggable `wp_generate_password()` function. If a developer chooses to override the function, the passwords created by the plugin will use the same methods and rules applied to passwords created through the "Forgot password?" tool. Minimum and maximum password lengths can also be set in the `wp_options` table (one row with the key of `wp-password-generator-opts`), though there is no dedicated settings page for these values (by default, passwords are between 7-16 characters) and they should suffice for 99% of users.
 
 = Can I change the way my passwords are generated? =
 
-Since version 2.2 WP Password Generator has used the pluggable function `wp_generate_password` to handle the actual generation of passwords. This switch a) kept the codebase more DRY and b) allows users to easily override the generator logic without editing core or plugin files.
+Since version 2.2 WP Password Generator has used the pluggable function `wp_generate_password()` to handle the actual generation of passwords. This switch a) kept the codebase more DRY and b) allows users to easily override the generator logic without editing core or plugin files.
 
-The default generator looks something like this and can be found in wp-includes/pluggable.php (line 1478 in 3.3.2):
+The default generator looks something like this and can be found in wp-includes/pluggable.php (line 1478 in core version 3.3.2):
 
     if ( !function_exists('wp_generate_password') ) :
     /**
@@ -94,7 +94,7 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 
 = 2.1 =
 * Ability to show generated password beside the generate button
-* 'Send this password?' checkbox only auto-checked the first time a password is generated. Subsequent generations will not re-check this box.
+* "Send this password?" checkbox only auto-checked the first time a password is generated. Subsequent generations will not re-check this box.
 * Store permitted characters and min/max password lengths in the `wp_options` table to prevent them from being overridden in future updates
 * jQuery functions are wrapped to allow the $ shortcut while in no-conflict mode
 * Better adherence to WordPress code standards
@@ -105,7 +105,7 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 * Ajax call now uses admin-ajax for better support for non-standard WordPress installations
 * Better adherence to the WordPress coding standards
 * Updated the special thanks section of readme.txt
-* Counter in wp_password_generator_generate() will only increment if a character has been added to the password string
+* Counter in `wp_password_generator_generate()` will only increment if a character has been added to the password string
 * wp-password-generator.js now passes JSLint
 
 = 1.1 =
