@@ -79,10 +79,17 @@ The default generator looks something like this and can be found in wp-includes/
     }
     endif;
 
-To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password` for the default.
+To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password()` for the default.
 
 
 == Changelog ==
+
+= 2.4 =
+* Added i18n support and included the POT file in the plugin files
+* Replaced instances of `bind()` and `delegate()` with jQuery's `on()` method
+* Added instructions for overriding `wp_generate_password()` in the README file
+* Promoted Chris Van Patten (VanPattenMedia) from "special thanks" to a plugin contributer
+* Plugin repo has been migrated to GitHub: https://github.com/stevegrunwell/wp-password-generator - Trac will only receive named releases (though not much has changed in that respect).
 
 = 2.3 =
 * Now works in WordPress installations that don't use the standard `wp-content/` directory location
@@ -116,6 +123,9 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 
 
 == Upgrade Notice ==
+
+= 2.4 =
+Added i18n support. Refactored jQuery scripting to be more future-proof.
 
 = 2.3 =
 Plugin will now work in WordPress installations where wp-content/ has a different name or location. Scripting has been updated to work with newer versions of jQuery - version 2.3 is not suitable for WordPress versions below 3.2
