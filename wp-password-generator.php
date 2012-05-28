@@ -19,6 +19,8 @@ define( 'WP_PASSWORD_GENERATOR_VERSION', '2.3' );
  * wp_options to prevent changes to these values from being overwritten
  *
  * @return void
+ * @uses get_option()
+ * @uses update_option()
  * @package WordPress
  * @subpackage WP Password Generator
  * @since 2.1
@@ -56,6 +58,9 @@ function wp_password_generator_install() {
  * Instantiate the plugin/enqueue wp-password-generator.js
  *
  * @return void
+ * @uses plugins_url()
+ * @uses wp_enqueue_script()
+ * @uses wp_localize_script()
  * @package WordPress
  * @subpackage WP Password Generator
  * @since 1.0
@@ -77,6 +82,9 @@ function wp_password_generator_load() {
  * Uses wp_generate_password(), a pluggable function within the WordPress core
  *
  * @return void (echoes password)
+ * @uses get_option()
+ * @uses wp_generate_password()
+ * @uses wp_password_generator_install()
  * @package WordPress
  * @subpackage WP Password Generator
  * @since 1.0
@@ -89,7 +97,7 @@ function wp_password_generator_generate() {
   }
   $len = mt_rand( $opts['min-length'], $opts['max-length'] ); // Min/max password lengths
 
-  echo wp_generate_password( $len, true, false );
+  print wp_generate_password( $len, true, false );
   return;
 }
 
