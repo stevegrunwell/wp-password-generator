@@ -14,7 +14,7 @@ define('WP_PASSWORD_GENERATOR_VERSION', '2.3');
 /**
  * Store the settings in a JSON-encoded array in the wp_options table
  *
- * Previous version of the readme.txt file encouraged users to edit wp_password_generator_generate()
+ * Previous versions (1.x) of the readme.txt file encouraged users to edit wp_password_generator_generate()
  * in order to change characters or min/max lengths. Moving forward, the options will be stored in
  * wp_options to prevent changes to these values from being overwritten
  *
@@ -64,8 +64,8 @@ function wp_password_generator_load(){
   if( basename($_SERVER['PHP_SELF']) == 'user-new.php' ){
     wp_enqueue_script('wp-password-generator', trailingslashit(plugins_url(basename(dirname(__FILE__)))) . 'wp-password-generator.js', array('jquery'), WP_PASSWORD_GENERATOR_VERSION, true);
     wp_localize_script('wp-password-generator', 'i18n', array(
-      'generate' => __('Generate Password'),
-      'show' => __('Show Password')
+      'generate' => __('Generate Password', 'wp-password-generator'),
+      'show' => __('Show Password', 'wp-password-generator')
     ));
   }
   return true;
