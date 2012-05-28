@@ -1,12 +1,12 @@
 <?php
 /*
-	Plugin Name: WP-Password Generator
-	Plugin URI: http://stevegrunwell.com/wp-password-generator
-	Description: Generates a random password when creating a new WP user
-	Version: 2.3
-	Author: Steve Grunwell
-	Author URI: http://stevegrunwell.com
-	License: GPL2
+  Plugin Name: WP-Password Generator
+  Plugin URI: http://stevegrunwell.com/wp-password-generator
+  Description: Generates a random password when creating a new WP user
+  Version: 2.3
+  Author: Steve Grunwell
+  Author URI: http://stevegrunwell.com
+  License: GPL2
 */
 
 define('WP_PASSWORD_GENERATOR_VERSION', '2.3');
@@ -61,10 +61,14 @@ function wp_password_generator_install(){
  * @since 1.0
  */
 function wp_password_generator_load(){
-	if( basename($_SERVER['PHP_SELF']) == 'user-new.php' ){
-		wp_enqueue_script('wp-password-generator', trailingslashit(plugins_url(basename(dirname(__FILE__)))) . 'wp-password-generator.js', array('jquery'), WP_PASSWORD_GENERATOR_VERSION, true);
-	}
-	return true;
+  if( basename($_SERVER['PHP_SELF']) == 'user-new.php' ){
+    wp_enqueue_script('wp-password-generator', trailingslashit(plugins_url(basename(dirname(__FILE__)))) . 'wp-password-generator.js', array('jquery'), WP_PASSWORD_GENERATOR_VERSION, true);
+    wp_localize_script('wp-password-generator', 'i18n', array(
+      'generate' => __('Generate Password'),
+      'show' => __('Show Password')
+    ));
+  }
+  return true;
 }
 
 /**
@@ -78,15 +82,15 @@ function wp_password_generator_load(){
  * @since 1.0
  */
 function wp_password_generator_generate(){
-	$opts = get_option('wp-password-generator-opts', false);
-	if( !$opts || $opts['version'] < WP_PASSWORD_GENERATOR_VERSION ){ // No options or an older version
-	  wp_password_generator_install();
-	  $opts = get_option('wp-password-generator-opts', false);
-	}
-	$len = mt_rand($opts['min-length'], $opts['max-length']); // Min/max password lengths
+  $opts = get_option('wp-password-generator-opts', false);
+  if( !$opts || $opts['version'] < WP_PASSWORD_GENERATOR_VERSION ){ // No options or an older version
+    wp_password_generator_install();
+    $opts = get_option('wp-password-generator-opts', false);
+  }
+  $len = mt_rand($opts['min-length'], $opts['max-length']); // Min/max password lengths
 
-	echo wp_generate_password($len, true, false);
-	return true;
+  echo wp_generate_password($len, true, false);
+  return true;
 }
 
 add_action('admin_print_scripts', 'wp_password_generator_load'); // run wp_password_generator_load() during admin_print_scripts
