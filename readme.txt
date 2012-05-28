@@ -1,5 +1,5 @@
 === WP Password Generator ===
-Contributors: SteveGrunwell
+Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
@@ -135,4 +135,4 @@ Generated passwords now vary between 7 and 16 characters in length, rather than 
 
 == Special Thanks ==
 
-Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. Chris Van Patten (http://vanpattenmedia.com/) also deserves major props for assistance with version 2.3.
+Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature.
