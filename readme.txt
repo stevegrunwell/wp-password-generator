@@ -5,6 +5,7 @@ Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
 Tested up to: 3.3
 Stable tag: 2.3
+License: GPLv2 or later
 
 Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
 
@@ -29,13 +30,50 @@ Please note that this plugin does require javascript to be enabled in order to w
 
 = How does the plugin generate passwords? =
 
-WP-Password Generator un-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to '/wp-content/plugins/wp-password-generator/wp-password-generator.php', which returns a randomly-generated password.
+WP-Password Generator un-obtrusively injects a "Generate Password" button into '/wp-admin/user-new.php'. When the button is clicked, an Ajax call is fired off to `/wp-content/plugins/wp-password-generator/wp-password-generator.php`, which returns a randomly-generated password.
 
-As of version 2.2, WP Password Generator calls the pluggable wp_generate_password() function (which is the same function WordPress uses to create new passwords for users who have clicked "Forgot password?"). This function can be overridden in a theme or plugin, if desired.
+As of version 2.2, WP Password Generator calls the pluggable `wp_generate_password()` function (which is the same function WordPress uses to create new passwords for users who have clicked "Forgot password?"). This function can be overridden in a theme or plugin, if desired (see "Can I change the way my passwords are generated?" below).
 
 = Is there anything to configure? =
 
-Not directly, but as of version 2.2 the plugin uses the pluggable wp_generate_password() function. If a developer chooses to override the function, the passwords created by the plugin will use the same methods and rules applied to passwords created through the "Forgot password?" tool. Minimum and maximum password lengths can also be set in the wp_options table (one row with the key of "wp-password-generator-opts"), though there is no dedicated settings page for these values (by default, passwords are between 7-16 characters).
+Not directly, but as of version 2.2 the plugin uses the pluggable `wp_generate_password()` function. If a developer chooses to override the function, the passwords created by the plugin will use the same methods and rules applied to passwords created through the "Forgot password?" tool. Minimum and maximum password lengths can also be set in the wp_options table (one row with the key of `wp-password-generator-opts`), though there is no dedicated settings page for these values (by default, passwords are between 7-16 characters).
+
+= Can I change the way my passwords are generated? =
+
+Since version 2.2 WP Password Generator has used the pluggable function `wp_generate_password` to handle the actual generation of passwords. This switch a) kept the codebase more DRY and b) allows users to easily override the generator logic without editing core or plugin files.
+
+The default generator looks something like this and can be found in wp-includes/pluggable.php (line 1478 in 3.3.2):
+
+    if ( !function_exists('wp_generate_password') ) :
+    /**
+     * Generates a random password drawn from the defined set of characters.
+     *
+     * @since 2.5
+     *
+     * @param int $length The length of password to generate
+     * @param bool $special_chars Whether to include standard special characters. Default true.
+     * @param bool $extra_special_chars Whether to include other special characters. Used when
+     *   generating secret keys and salts. Default false.
+     * @return string The random password
+     **/
+    function wp_generate_password( $length = 12, $special_chars = true, $extra_special_chars = false ) {
+      $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      if ( $special_chars )
+        $chars .= '!@#$%^&*()';
+      if ( $extra_special_chars )
+        $chars .= '-_ []{}<>~`+=,.;:/?|';
+
+      $password = '';
+      for ( $i = 0; $i < $length; $i++ ) {
+        $password .= substr($chars, wp_rand(0, strlen($chars) - 1), 1);
+      }
+
+      // random_password filter was previously in random_password function which was deprecated
+      return apply_filters('random_password', $password);
+    }
+    endif;
+
+To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password` for the default.
 
 
 == Screenshots ==
