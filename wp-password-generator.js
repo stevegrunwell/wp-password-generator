@@ -7,7 +7,7 @@
 
 jQuery(function($){
   "use strict";
-  $('#pass-strength-result').before('<br /><button id="password_generator" class="button-primary">' + i18n.generate + '</button><br />');
+  $('#pass-strength-result').before('<br /><button id="password_generator" class="button-primary" value="' + i18n.generate + '" role="button">' + i18n.generate + '</button><br />');
 
   $('#password_generator').on('click', function(){
     $.post(ajaxurl, { action : 'generate_password' }, function(p){
@@ -17,7 +17,7 @@ jQuery(function($){
       /** Append the 'Show password' link and bind the click event */
       if( $('#password_generator_toggle').length === 0 ){
         $('#send_password').prop('checked', 'checked'); // Only do this the first time
-        $('#password_generator').after('<span id="password_generator_toggle" style="margin-left:.25em;"><a href="#">' + i18n.show + '</a></span>');
+        $('#password_generator').after('<span id="password_generator_toggle" style="margin-left:.25em;"><a href="#" role="button">' + i18n.show + '</a></span>');
         $('#password_generator_toggle').on('click', 'a', function(){
           $(this).fadeOut(200, function(){
             $('#password_generator_toggle').html('<kbd style="font-size:1.2em;">' + $('#pass1').val() + '</kbd>');
