@@ -5,27 +5,27 @@
 */
 /*jslint white: true, maxerr: 50, indent: 4 */
 
-jQuery(function(){
-  'use strict';
-   jQuery('#pass-strength-result').before('<br /><button id="password_generator" class="button-primary">' + i18n.generate + '</button><br />');
+jQuery(function($){
+  "use strict";
+  $('#pass-strength-result').before('<br /><button id="password_generator" class="button-primary">' + i18n.generate + '</button><br />');
 
-   jQuery('#password_generator').bind('click', function(){
-     jQuery.post(ajaxurl, { action : 'generate_password' }, function(p){
-       jQuery('#pass1, #pass2').val(p).trigger('keyup');
-       jQuery('#password_generator_toggle').find('kbd').html(p);
+  $('#password_generator').on('click', function(){
+    $.post(ajaxurl, { action : 'generate_password' }, function(p){
+      $('#pass1, #pass2').val(p).trigger('keyup');
+      $('#password_generator_toggle').find('kbd').html(p);
 
-       /** Append the 'Show password' link and bind the click event */
-       if( jQuery('#password_generator_toggle').length === 0 ){
-         jQuery('#send_password').prop('checked', 'checked'); // Only do this the first time
-         jQuery('#password_generator').after('<span id="password_generator_toggle" style="margin-left:.25em;"><a href="#">' + i18n.show + '</a></span>');
-         jQuery('#password_generator_toggle').delegate('a', 'click', function(){
-           jQuery(this).fadeOut(200, function(){
-             jQuery('#password_generator_toggle').html('<kbd style="font-size:1.2em;">' + jQuery('#pass1').val() + '</kbd>');
-           });
-           return false;
-         });
-       }
-     });
-     return false;
-   });
+      /** Append the 'Show password' link and bind the click event */
+      if( $('#password_generator_toggle').length === 0 ){
+        $('#send_password').prop('checked', 'checked'); // Only do this the first time
+        $('#password_generator').after('<span id="password_generator_toggle" style="margin-left:.25em;"><a href="#">' + i18n.show + '</a></span>');
+        $('#password_generator_toggle').on('click', 'a', function(){
+          $(this).fadeOut(200, function(){
+            $('#password_generator_toggle').html('<kbd style="font-size:1.2em;">' + $('#pass1').val() + '</kbd>');
+          });
+          return false;
+        });
+      }
+    });
+    return false;
+  });
 });
