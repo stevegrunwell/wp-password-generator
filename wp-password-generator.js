@@ -1,7 +1,7 @@
 /*
   Plugin Name: WP-Password Generator
   Plugin URI: http://stevegrunwell.com/wp-password-generator
-  Version: 2.3
+  Version: 2.4
 */
 /*jslint white: true, maxerr: 50, indent: 4 */
 
