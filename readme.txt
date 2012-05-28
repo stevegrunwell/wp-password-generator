@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== WP Password Generator ===
 Contributors: SteveGrunwell
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
@@ -7,7 +7,7 @@ Tested up to: 3.3
 Stable tag: 2.3
 License: GPLv2 or later
 
-Generates a random password (via Ajax) for new users created through wp-admin/user-new.php.
+WP Password Generator takes the hassle out of creating new WordPress users by generating random, secure passwords with one click.
 
 
 == Description ==
