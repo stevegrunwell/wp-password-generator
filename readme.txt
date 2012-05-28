@@ -3,7 +3,7 @@ Contributors: SteveGrunwell
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
-Tested up to: 3.3
+Tested up to: 3.3.2
 Stable tag: 2.3
 License: GPLv2 or later
 
@@ -14,7 +14,7 @@ WP Password Generator takes the hassle out of creating new WordPress users by ge
 
 When administrators create new users through the WordPress admin interface (wp-admin/user-new.php), they are forced to come up with a password for the new user. The administrator is faced with a choice: use a separate password generator app or waste precious time coming up with a clever password only one person will ever see.
 
-WP-Password Generator takes the hassle out of creating new or insecure passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password.
+WP-Password Generator takes the hassle out of creating new user passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password. The password generator function is also totally pluggable, so you can easily change the way passwords are generated in order to meet your standards.
 
 Please note that this plugin does require javascript to be enabled in order to work. Without javascript, the generator will simply be unavailable.
 
@@ -24,6 +24,12 @@ Please note that this plugin does require javascript to be enabled in order to w
 1. Upload the '/wp-password-generator/' plugin directory to '/wp-content/plugins'
 2. Activate the plugin
 3. That's it!
+
+
+== Screenshots ==
+
+1. The "Generate Password" button just above the strength indicator in /wp-admin/user-new.php with the new 'Show password' link beside it
+2. A generated password revealed by the user clicking 'Show password'. This password will update with subsequent generations.
 
 
 == Frequently Asked Questions ==
@@ -76,12 +82,6 @@ The default generator looks something like this and can be found in wp-includes/
 To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password` for the default.
 
 
-== Screenshots ==
-
-1. The "Generate Password" button just above the strength indicator in /wp-admin/user-new.php with the new 'Show password' link beside it
-2. A generated password revealed by the user clicking 'Show password'. This password will update with subsequent generations.
-
-
 == Changelog ==
 
 = 2.3 =
@@ -118,10 +118,10 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 == Upgrade Notice ==
 
 = 2.3 =
-Plugin will now work in WordPress installations where `wp-content/` has a different name or location. Scripting has been updated to work with newer versions of jQuery - version 2.3 is not suitable for WordPress versions below 3.2
+Plugin will now work in WordPress installations where wp-content/ has a different name or location. Scripting has been updated to work with newer versions of jQuery - version 2.3 is not suitable for WordPress versions below 3.2
 
 = 2.2 =
-Password generation is now handled by the wp_generate_password() pluggable function so that both generated and "Lost password" requests are handled by the same function.
+Password generation is now handled by the `wp_generate_password()` pluggable function so that both generated and "Lost password" requests are handled by the same function.
 
 = 2.1 =
 Ability to view generated passwords before submitting form. Only auto-check the 'Send password' option upon first generation.
