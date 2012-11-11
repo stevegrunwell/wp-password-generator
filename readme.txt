@@ -84,11 +84,14 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 
 == Changelog ==
 
+= 2.5 =
+* Added password generator to user-edit.php and profile.php at the suggestion of [Dave Griffin](https://github.com/davegriffin) ([#1](https://github.com/stevegrunwell/wp-password-generator/issues/1))
+
 = 2.4 =
 * Added i18n support and included the POT file in the plugin files
 * Replaced instances of `bind()` and `delegate()` with jQuery's `on()` method
 * Added instructions for overriding `wp_generate_password()` in the README file
-* Promoted Chris Van Patten (VanPattenMedia) from "special thanks" to a plugin contributer
+* Promoted Chris Van Patten (VanPattenMedia) from "special thanks" to a plugin contributor
 * Plugin repo has been migrated to GitHub: https://github.com/stevegrunwell/wp-password-generator - Trac will only receive named releases (though not much has changed in that respect).
 
 = 2.3 =
@@ -123,6 +126,9 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 
 
 == Upgrade Notice ==
+
+= 2.5 =
+Password generator will now appear on user profile and edit screens.
 
 = 2.4 =
 Added i18n support. Refactored jQuery scripting to be more future-proof.
