@@ -86,6 +86,7 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 
 = 2.5 =
 * Added password generator to user-edit.php and profile.php at the suggestion of [Dave Griffin](https://github.com/davegriffin) ([#1](https://github.com/stevegrunwell/wp-password-generator/issues/1))
+* Added Spanish translation (corrections/improvements welcome, I translated myself with Google Translate and my two years of high school Spanish).
 
 = 2.4 =
 * Added i18n support and included the POT file in the plugin files
@@ -128,7 +129,7 @@ To overwrite the default behavior, simply create a function named `wp_generate_p
 == Upgrade Notice ==
 
 = 2.5 =
-Password generator will now appear on user profile and edit screens.
+Password generator will now appear on user profile and edit screens. Added Spanish localization.
 
 = 2.4 =
 Added i18n support. Refactored jQuery scripting to be more future-proof.
