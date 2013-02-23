@@ -160,4 +160,4 @@ Generated passwords now vary between 7 and 16 characters in length, rather than 
 
 == Special Thanks ==
 
-Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature.
+Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. [Dave Griffin](https://github.com/davegriffin) and Marcel Kuiper also convinced me to expand to the user edit screen for version 2.5.
