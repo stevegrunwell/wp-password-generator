@@ -2,15 +2,21 @@
 
 When administrators create new users through the WordPress admin interface (wp-admin/user-new.php), they are forced to come up with a password for the new user. The administrator is faced with a choice: use a separate password generator app or waste precious time coming up with a clever password only one person will ever see.
 
-WP-Password Generator takes the hassle out of creating new user passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password. The password generator function is also totally pluggable, so you can easily change the way passwords are generated in order to meet your standards.
+WP Password Generator takes the hassle out of creating new user passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password. The password generator function is also totally pluggable, so you can easily change the way passwords are generated in order to meet your standards.
 
 Please note that this plugin does require javascript to be enabled in order to work. Without javascript, the generator will simply be unavailable.
+
+## Roadmap
+
+WP Password Generator is meant to be a simple, non-intrusive plugin. I've kicked around the idea of a settings page (min/max password lengths, allowed characters) but it really doesn't seem necessary. I'd also love to see more translations for the non-English speaking WordPress community.
+
+If there are features you'd like to see please file an issue request on Github or, better yet, send me a pull request.
 
 ## Frequently Asked Questions
 
 ### How does the plugin generate passwords?
 
-WP-Password Generator un-obtrusively injects a "Generate Password" button into /wp-admin/user-new.php. When the button is clicked, an Ajax call is fired off to /wp-content/plugins/wp-password-generator/wp-password-generator.php, which returns a randomly-generated password.
+WP Password Generator un-obtrusively injects a "Generate Password" button into /wp-admin/user-new.php. When the button is clicked, an Ajax call is fired off to /wp-content/plugins/wp-password-generator/wp-password-generator.php, which returns a randomly-generated password.
 
 As of version 2.2, WP Password Generator calls the pluggable `wp_generate_password()` function (which is the same function WordPress uses to create new passwords for users who have clicked "Forgot password?"). This function can be overridden in a theme or plugin, if desired (see "Can I change the way my passwords are generated?" below).
 
