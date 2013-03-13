@@ -3,7 +3,7 @@
  * Plugin Name: WP Password Generator
  * Plugin URI: http://stevegrunwell.com/wp-password-generator
  * Description: Generates a random password when creating a new WP user
- * Version: 2.5
+ * Version: 2.6
  * Author: Steve Grunwell
  * Author URI: http://stevegrunwell.com
  * License: GPL2
@@ -14,6 +14,20 @@
  */
 
 define( 'WP_PASSWORD_GENERATOR_VERSION', '2.5' );
+
+
+/**
+ * Load the textdomain for translating the plugin
+ *
+ * @return void
+ * @since 2.6
+ * @uses load_plugin_textdomain()
+ */
+function wp_password_generator_init() {
+	load_plugin_textdomain( 'wp-password-generator', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'wp_password_generator_init' );
+
 
 /**
  * Store plugin settings the wp_options table (key = 'wp-password-generator-opts')
@@ -97,7 +111,14 @@ function wp_password_generator_generate() {
   }
   $len = mt_rand( $opts['min-length'], $opts['max-length'] ); // Min/max password lengths
 
-  print wp_generate_password( $len, true, false );
+  // Allow to modify the args supplied to wp_generate_password
+  $args = array(
+	  'length' => $len,
+	  'special_chars' => true,
+	  'extra_special_chars' => false,
+  );
+
+  print call_user_func_array( 'wp_generate_password', apply_filters( 'wp_password_generator_args', $args, $opts ) );
   return;
 }
 
