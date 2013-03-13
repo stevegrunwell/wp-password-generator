@@ -4,7 +4,7 @@ Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
 Tested up to: 3.5.1
-Stable tag: 2.5
+Stable tag: 2.6
 License: GPLv2 or later
 
 WP Password Generator takes the hassle out of creating new WordPress users by generating random, secure passwords with one click.
@@ -91,6 +91,11 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 
 == Changelog ==
+
+= 2.6 =
+* Added a filter wp_password_generator_args which allows to modify the args supplied to the build in wp_generate_password function
+* Added a languages directory and loaded the text-domain so translations are applied automatic
+* Added Dutch translation
 
 = 2.5 =
 * Added password generator to user-edit.php and profile.php at the suggestion of [Dave Griffin](https://github.com/davegriffin) ([#1](https://github.com/stevegrunwell/wp-password-generator/issues/1))
