@@ -93,9 +93,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 == Changelog ==
 
 = 2.6 =
-* Added a filter wp_password_generator_args which allows to modify the args supplied to the build in wp_generate_password function
-* Added a languages directory and loaded the text-domain so translations are applied automatic
-* Added Dutch translation
+* Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
+* Added a languages directory and loaded the text-domain so translations are applied automatically
+* Added Dutch translation (thanks David Mosterd)
 
 = 2.5 =
 * Added password generator to user-edit.php and profile.php at the suggestion of [Dave Griffin](https://github.com/davegriffin) ([#1](https://github.com/stevegrunwell/wp-password-generator/issues/1))
