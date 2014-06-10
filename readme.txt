@@ -3,7 +3,7 @@ Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
-Tested up to: 3.5.1
+Tested up to: 3.9.1
 Stable tag: 2.6
 License: GPLv2 or later
 
@@ -81,6 +81,20 @@ The default generator looks something like this and can be found in wp-includes/
 
 To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password()` for the default.
 
+You can also adjust the arguments passed to `wp_generate_password()` via the `wp_password_generator_args` filter. For example, you could require 16 character passwords with the following:
+
+    /**
+     * Set the length of generated passwords from WP Password Generator to 16 characters
+     *
+     * @param array $args Default arguments
+     * @return array
+     */
+    function mysite_set_password_requirements( $args ) {
+      $args['length'] = 16;
+      return $args;
+    }
+    add_action( 'wp_password_generator_args', 'mysite_set_password_requirements' );
+
 = Can I use WP Password Generator to change existing users' passwords? =
 
 As of version 2.5 the "Generate Password" button has been added to the profile/user edit pages.
@@ -96,7 +110,8 @@ WordPress Multisite already generates random passwords for new Multisite users s
 * Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
 * Fixed bug where a "0" was always being appended to the end of generated passwords (thank you to Rig Kruger and [Peter Berce](http://berce.us/) for bringing it to my attention!)
 * Added a languages directory and loaded the text-domain so translations are applied automatically
-* Added Dutch translation (thanks David Mosterd)
+* Added Dutch translation (thanks David Mosterd of (CodPress)[http://www.codepress.nl/] of CodePress)
+* Fixed copy-paste error when assigning min/max-length params for passwords (thanks [Robert Paprocki](https://github.com/p0pr0ck5))
 
 = 2.5 =
 * Added password generator to user-edit.php and profile.php at the suggestion of [Dave Griffin](https://github.com/davegriffin) ([#1](https://github.com/stevegrunwell/wp-password-generator/issues/1))
@@ -142,6 +157,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 == Upgrade Notice ==
 
+= 2.6 =
+Fixed bug where a "0" was always being appended to generated passwords. Password generator arguments can now be controlled via the `wp_password_generator_args` filter. Added Dutch translation.
+
 = 2.5 =
 Password generator will now appear on user profile and edit screens. Added Spanish localization.
 
@@ -166,4 +184,4 @@ Generated passwords now vary between 7 and 16 characters in length, rather than 
 
 == Special Thanks ==
 
-Special thanks goes out to Greg Laycock (http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. [Dave Griffin](https://github.com/davegriffin) and Marcel Kuiper also convinced me to expand to the user edit screen for version 2.5. Finally, Chris Van Patten of [Van Patten Media](http://vanpattenmedia.com/) has also contributed immensely to the ongoing development and refinement of the plugin.
+Special thanks goes out to [Greg Laycock](http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. [Dave Griffin](https://github.com/davegriffin) and Marcel Kuiper also convinced me to expand to the user edit screen for version 2.5. David Mosterd of (CodePress)[http://www.codepress.nl/] also contributed to the development of 2.6. Finally, Chris Van Patten of [Van Patten Media](http://vanpattenmedia.com/) has also contributed immensely to the ongoing development and refinement of the plugin.

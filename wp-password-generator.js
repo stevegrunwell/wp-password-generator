@@ -1,5 +1,6 @@
 /**
  * Scripting for the "Generate Password" button
+ *
  * @package WordPress
  * @subpackage WP Password Generator
  * @author Steve Grunwell
