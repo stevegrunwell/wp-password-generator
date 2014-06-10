@@ -119,7 +119,7 @@ function wp_password_generator_generate() {
   );
 
   print call_user_func_array( 'wp_generate_password', apply_filters( 'wp_password_generator_args', $args, $opts ) );
-  return;
+  exit;
 }
 
 add_action( 'admin_print_scripts', 'wp_password_generator_load' ); // run wp_password_generator_load() during admin_print_scripts

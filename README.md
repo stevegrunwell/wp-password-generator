@@ -84,6 +84,7 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 ### 2.6
 * Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
+* Fixed bug where a "0" was always being appended to the end of generated passwords (thank you to Rig Kruger and [Peter Berce](http://berce.us/) for bringing it to my attention!)
 * Added a languages directory and loaded the text-domain so translations are applied automatically
 * Added Dutch translation (thanks David Mosterd)
 * Fixed copy-paste error when assigning min/max-length params for passwords (thanks [Robert Paprocki](https://github.com/p0pr0ck5))
