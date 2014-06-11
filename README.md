@@ -94,6 +94,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 ## Changelog
 
+### 2.7
+* Added Russian translation (thanks to Rig Kruger)
+
 ### 2.6
 * Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
 * Fixed bug where a "0" was always being appended to the end of generated passwords (thank you to Rig Kruger and [Peter Berce](http://berce.us/) for bringing it to my attention!)
@@ -145,3 +148,8 @@ WordPress Multisite already generates random passwords for new Multisite users s
 ## Special Thanks
 
 Special thanks goes out to [Greg Laycock](http://76horsepower.com/) for his input during the ongoing development of this plug-in. Additional thanks to WordPress users pampfelimetten for suggesting the plugin hook into the strength indicator and michapixel for recommending the 'Show password' feature. [Dave Griffin](https://github.com/davegriffin) and Marcel Kuiper also convinced me to expand to the user edit screen for version 2.5. David Mosterd of [CodePress](http://www.codepress.nl/) also contributed to the development of 2.6. Finally, Chris Van Patten of [Van Patten Media](http://vanpattenmedia.com/) has also contributed immensely to the ongoing development and refinement of the plugin.
+
+### Translation credits
+
+* **Dutch** - [David Mosterd](http://www.codepress.nl)
+* **Russian** - Rig Kruger
