@@ -20,7 +20,7 @@ jQuery( function ( $ ) {
       /** Append the 'Show password' link and bind the click event */
       if ( $('#password_generator_toggle').length === 0 ) {
         $('#send_password').prop( 'checked', 'checked' ); // Only do this the first time
-        $('#password_generator').after( '<span id="password_generator_toggle" style="margin-left:.25em;"><a href="#" role="button">' + wpPasswordGenerator.show + '</a></span>' );
+        $('#password_generator').after( '<span id="password_generator_toggle" style="margin-left:.75em;"><a href="#" role="button">' + wpPasswordGenerator.show + '</a></span>' );
         $('#password_generator_toggle').on( 'click', 'a', function() {
           $( this ).fadeOut( 200, function() {
             $('#password_generator_toggle').html( '<kbd style="font-size:1.2em;">' + $('#pass1').val() + '</kbd>' );
