@@ -12,9 +12,7 @@ WP Password Generator is meant to be a simple, non-intrusive plugin. I've kicked
 
 If there are features you'd like to see please file an issue request on Github or, better yet, send me a pull request.
 
-### 3.0
-
-How about a total re-write using OOP, more filters (like the ability to remove it from edit user page if desired), and a generally cleaner codebase?
+> Unfortunately, this plugin will be [disabled sometime in the near future](https://github.com/stevegrunwell/wp-password-generator/issues/9) due to [a Trac ticket proposing this functionality be made part of core](https://core.trac.wordpress.org/ticket/24633). The plugin will continue to be supported until the feature reaches core, but it's unlikely the plugin will ever live to see 3.0.
 
 ## Frequently Asked Questions
 
@@ -95,6 +93,8 @@ WordPress Multisite already generates random passwords for new Multisite users s
 ## Changelog
 
 ### 2.7
+* Tested with WordPress 4.0
+* Added banners for WordPress.org
 * Added Russian translation (thanks to Rig Kruger)
 * Added Portuguese translation (thanks to André Mácola)
 
@@ -154,3 +154,4 @@ Special thanks goes out to [Greg Laycock](http://76horsepower.com/) for his inpu
 
 * **Dutch** - [David Mosterd](http://www.codepress.nl)
 * **Russian** - Rig Kruger
+* **Portuguese** - André Mácola

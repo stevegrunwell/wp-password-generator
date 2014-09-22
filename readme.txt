@@ -3,7 +3,7 @@ Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 2.6
 License: GPLv2 or later
 
@@ -107,6 +107,8 @@ WordPress Multisite already generates random passwords for new Multisite users s
 == Changelog ==
 
 = 2.7 =
+* Tested with WordPress 4.0
+* Added banners for WordPress.org
 * Added Russian translation (thanks to Rig Kruger)
 * Added Portuguese translation (thanks to André Mácola)
 
@@ -160,6 +162,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 
 == Upgrade Notice ==
+
+= 2.7 =
+Tested with WordPress 4.0, added Russian and Portuguese translations.
 
 = 2.6 =
 Fixed bug where a "0" was always being appended to generated passwords. Password generator arguments can now be controlled via the `wp_password_generator_args` filter. Added Dutch translation.
