@@ -97,6 +97,7 @@ WordPress Multisite already generates random passwords for new Multisite users s
 * Added banners for WordPress.org
 * Added Russian translation (thanks to Rig Kruger)
 * Added Portuguese translation (thanks to André Mácola)
+* Added Serbian translation (thanks to Ogi Djuraskovic of [firstsiteguide.com](http://firstsiteguide.com/))
 
 ### 2.6
 * Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
