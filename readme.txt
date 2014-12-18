@@ -3,7 +3,7 @@ Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 3.2
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: 2.7
 License: GPLv2 or later
 
