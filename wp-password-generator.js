@@ -16,7 +16,7 @@ jQuery(function ($) {
     $.post(ajaxurl, {
       action: 'generate_password'
     }, function(p) {
-      $('#pass1, #pass2').val(p).trigger('keyup');
+      $('#pass1, #pass2').val(p).trigger('input');
       $('#password_generator_toggle').find('kbd').html(p);
 
       /** Append the 'Show password' link and bind the click event */
