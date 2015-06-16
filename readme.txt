@@ -2,9 +2,9 @@
 Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
-Requires at least: 3.2
-Tested up to: 4.1
-Stable tag: 2.7
+Requires at least: 4.2
+Tested up to: 4.2.2
+Stable tag: 2.7.1
 License: GPLv2 or later
 
 WP Password Generator takes the hassle out of creating new WordPress users by generating random, secure passwords with one click.
