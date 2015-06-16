@@ -161,3 +161,4 @@ Special thanks goes out to [Greg Laycock](http://76horsepower.com/) for his inpu
 * **Dutch** - [David Mosterd](http://www.codepress.nl)
 * **Russian** - Rig Kruger
 * **Portuguese** - André Mácola
+* **Serbian** - [Ogi Djuraskovic](http://firstsiteguide.com)
