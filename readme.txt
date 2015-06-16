@@ -106,6 +106,11 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 == Changelog ==
 
+= 2.7.1 =
+* Tested with WordPress 4.2
+* Fixed strength meter triggering, which was broken in 4.2 (thanks [Chris Van Patten](https://www.vanpattenmedia.com/))
+* Code documentation updates
+
 = 2.7 =
 * Tested with WordPress 4.0
 * Added banners for WordPress.org
