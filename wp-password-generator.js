@@ -1,8 +1,6 @@
 /**
  * Scripting for the "Generate Password" button
  *
- * @package WordPress
- * @subpackage WP Password Generator
  * @author Steve Grunwell
  */
 /** jslint white: true, maxerr: 50, indent: 4 */
