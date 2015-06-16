@@ -50,50 +50,50 @@ Since version 2.2 WP Password Generator has used the pluggable function `wp_gene
 
 The default generator looks something like this and can be found in wp-includes/pluggable.php (line 1478 in core version 3.3.2):
 
-    if ( !function_exists('wp_generate_password') ) :
-    /**
-     * Generates a random password drawn from the defined set of characters.
-     *
-     * @since 2.5
-     *
-     * @param int $length The length of password to generate
-     * @param bool $special_chars Whether to include standard special characters. Default true.
-     * @param bool $extra_special_chars Whether to include other special characters. Used when
-     *   generating secret keys and salts. Default false.
-     * @return string The random password
-     **/
-    function wp_generate_password( $length = 12, $special_chars = true, $extra_special_chars = false ) {
-      $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      if ( $special_chars )
-        $chars .= '!@#$%^&*()';
-      if ( $extra_special_chars )
-        $chars .= '-_ []{}<>~`+=,.;:/?|';
+		if ( !function_exists('wp_generate_password') ) :
+		/**
+		 * Generates a random password drawn from the defined set of characters.
+		 *
+		 * @since 2.5
+		 *
+		 * @param int $length The length of password to generate
+		 * @param bool $special_chars Whether to include standard special characters. Default true.
+		 * @param bool $extra_special_chars Whether to include other special characters. Used when
+		 *   generating secret keys and salts. Default false.
+		 * @return string The random password
+		 **/
+		function wp_generate_password( $length = 12, $special_chars = true, $extra_special_chars = false ) {
+			$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+			if ( $special_chars )
+				$chars .= '!@#$%^&*()';
+			if ( $extra_special_chars )
+				$chars .= '-_ []{}<>~`+=,.;:/?|';
 
-      $password = '';
-      for ( $i = 0; $i < $length; $i++ ) {
-        $password .= substr($chars, wp_rand(0, strlen($chars) - 1), 1);
-      }
+			$password = '';
+			for ( $i = 0; $i < $length; $i++ ) {
+				$password .= substr($chars, wp_rand(0, strlen($chars) - 1), 1);
+			}
 
-      // random_password filter was previously in random_password function which was deprecated
-      return apply_filters('random_password', $password);
-    }
-    endif;
+			// random_password filter was previously in random_password function which was deprecated
+			return apply_filters('random_password', $password);
+		}
+		endif;
 
 To overwrite the default behavior, simply create a function named `wp_generate_password()` in your theme's functions.php file. WordPress will then substitute your theme's `wp_generate_password()` for the default.
 
 You can also adjust the arguments passed to `wp_generate_password()` via the `wp_password_generator_args` filter. For example, you could require 16 character passwords with the following:
 
-    /**
-     * Set the length of generated passwords from WP Password Generator to 16 characters
-     *
-     * @param array $args Default arguments
-     * @return array
-     */
-    function mysite_set_password_requirements( $args ) {
-      $args['length'] = 16;
-      return $args;
-    }
-    add_action( 'wp_password_generator_args', 'mysite_set_password_requirements' );
+		/**
+		 * Set the length of generated passwords from WP Password Generator to 16 characters
+		 *
+		 * @param array $args Default arguments
+		 * @return array
+		 */
+		function mysite_set_password_requirements( $args ) {
+			$args['length'] = 16;
+			return $args;
+		}
+		add_action( 'wp_password_generator_args', 'mysite_set_password_requirements' );
 
 = Can I use WP Password Generator to change existing users' passwords? =
 

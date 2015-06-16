@@ -46,19 +46,19 @@ if ( !function_exists('wp_generate_password') ) :
  * @return string The random password
  **/
 function wp_generate_password( $length = 12, $special_chars = true, $extra_special_chars = false ) {
-  $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  if ( $special_chars )
-    $chars .= '!@#$%^&*()';
-  if ( $extra_special_chars )
-    $chars .= '-_ []{}<>~`+=,.;:/?|';
+	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	if ( $special_chars )
+		$chars .= '!@#$%^&*()';
+	if ( $extra_special_chars )
+		$chars .= '-_ []{}<>~`+=,.;:/?|';
 
-  $password = '';
-  for ( $i = 0; $i < $length; $i++ ) {
-    $password .= substr($chars, wp_rand(0, strlen($chars) - 1), 1);
-  }
+	$password = '';
+	for ( $i = 0; $i < $length; $i++ ) {
+		$password .= substr($chars, wp_rand(0, strlen($chars) - 1), 1);
+	}
 
-  // random_password filter was previously in random_password function which was deprecated
-  return apply_filters('random_password', $password);
+	// random_password filter was previously in random_password function which was deprecated
+	return apply_filters('random_password', $password);
 }
 endif;
 ```
@@ -75,8 +75,8 @@ You can also adjust the arguments passed to `wp_generate_password()` via the `wp
  * @return array
  */
 function mysite_set_password_requirements( $args ) {
-  $args['length'] = 16;
-  return $args;
+	$args['length'] = 16;
+	return $args;
 }
 add_action( 'wp_password_generator_args', 'mysite_set_password_requirements' );
 ```
