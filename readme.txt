@@ -3,8 +3,8 @@ Contributors: stevegrunwell, VanPattenMedia
 Donate link: http://stevegrunwell.com/wp-password-generator
 Tags: password, password generator, users, wp_generate_password, pluggable
 Requires at least: 4.2
-Tested up to: 4.2.2
-Stable tag: 2.7.1
+Tested up to: 4.3
+Stable tag: 2.8
 License: GPLv2 or later
 
 WP Password Generator takes the hassle out of creating new WordPress users by generating random, secure passwords with one click.
@@ -12,11 +12,13 @@ WP Password Generator takes the hassle out of creating new WordPress users by ge
 
 == Description ==
 
+**Notice:** With the [native password generation features being introduced in WordPress 4.3](https://make.wordpress.org/core/2015/07/28/passwords-strong-by-default/) this plugin is no longer necessary to generate strong passwords. You can [read more about the plugin sunsetting on the developer's blog](https://stevegrunwell.com/blog/sunsetting-wp-password-generator).**
+
 When administrators create new users through the WordPress admin interface (wp-admin/user-new.php), they are forced to come up with a password for the new user. The administrator is faced with a choice: use a separate password generator app or waste precious time coming up with a clever password only one person will ever see.
 
 WP Password Generator takes the hassle out of creating new user passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password. The password generator function is also totally pluggable, so you can easily change the way passwords are generated in order to meet your standards.
 
-Please note that this plugin does require javascript to be enabled in order to work. Without javascript, the generator will simply be unavailable.
+Please note that this plugin does require JavaScript to be enabled in order to work. Without JavaScript, the generator will simply be unavailable.
 
 
 == Installation ==
@@ -105,6 +107,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 
 == Changelog ==
+
+= 2.8 =
+* [Final version of the plugin](https://stevegrunwell.com/blog/sunsetting-wp-password-generator), as it's no longer necessary as of WordPress 4.3.
 
 = 2.7.1 =
 * Tested with WordPress 4.2

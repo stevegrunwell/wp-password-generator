@@ -1,33 +1,65 @@
 <?php
 /**
  * Plugin Name: WP Password Generator
- * Plugin URI: http://stevegrunwell.com/wp-password-generator
+ * Plugin URI: https://stevegrunwell.com/wp-password-generator
  * Description: Generates a random password when creating a new WP user
- * Version: 2.7.1
+ * Version: 2.8
  * Author: Steve Grunwell
- * Author URI: http://stevegrunwell.com
+ * Author URI: https://stevegrunwell.com
  * License: GPL2
  *
  * @author Steve Grunwell
  */
 
-define( 'WP_PASSWORD_GENERATOR_VERSION', '2.7.1' );
+define( 'WP_PASSWORD_GENERATOR_VERSION', '2.8' );
 
 /**
- * Load the textdomain for translating the plugin.
+ * Initialize the plugin.
  *
  * @since 2.6
+ *
+ * @global $wp_version
  */
 function wp_password_generator_init() {
+	global $wp_version;
+
 	load_plugin_textdomain(
 		'wp-password-generator',
 		false,
 		dirname( plugin_basename( __FILE__ ) ) . '/languages/'
 	);
+
+	// I didn't want to do a version check here, but they generate one password per load
+	if ( version_compare( '4.3', $wp_version, '>=' ) ) {
+		add_action( 'admin_notices', 'wp_password_generator_deprecation_notice' );
+
+	} else {
+		add_action( 'admin_print_scripts', 'wp_password_generator_load' );
+		add_action( 'wp_ajax_generate_password', 'wp_password_generator_generate' ); // Ajax hook
+	}
 }
 
 add_action( 'plugins_loaded', 'wp_password_generator_init' );
 
+/**
+ * Inform users that WP Password Generator has been deprecated as of WordPress 4.3.
+ *
+ * @since 2.8
+ */
+function wp_password_generator_deprecation_notice() {
+	$current_screen = get_current_screen();
+	if ( 'plugins' === $current_screen->base ) {
+		printf(
+			'<div class="error notice is-dismissible"><p>%s<br><a href="%s" target="_blank">%s</a></p></div>',
+			esc_html__(
+				'WP Password Generator is no longer necessary to generate strong passwords in WordPress 4.3 and above and can be safely removed.',
+				'wp-password-generator'
+			),
+			esc_url( 'https://stevegrunwell.com/blog/sunsetting-wp-password-generator' ),
+			esc_html__( 'Learn more', 'wp-password-generator' )
+		);
+	}
+}
 
 /**
  * Store plugin settings the wp_options table (key = 'wp-password-generator-opts')
@@ -100,8 +132,6 @@ function wp_password_generator_load() {
 	return;
 }
 
-add_action( 'admin_print_scripts', 'wp_password_generator_load' );
-
 /**
  * Handle an Ajax request for a password, print response.
  *
@@ -134,5 +164,3 @@ function wp_password_generator_generate() {
 	echo call_user_func_array( 'wp_generate_password', apply_filters( 'wp_password_generator_args', $args, $opts ) );
 	exit;
 }
-
-add_action( 'wp_ajax_generate_password', 'wp_password_generator_generate' ); // Ajax hook
