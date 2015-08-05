@@ -101,14 +101,14 @@ WordPress Multisite already generates random passwords for new Multisite users s
 * Tested with WordPress 4.0
 * Added banners for WordPress.org
 * Added Russian translation (thanks to Rig Kruger)
-* Added Portuguese translation (thanks to André Mácola)
+* Added Portuguese translation (thanks to [André Mácola](http://www.macola.com.br/))
 * Added Serbian translation (thanks to Ogi Djuraskovic of [firstsiteguide.com](http://firstsiteguide.com/))
 
 ### 2.6
 * Added a filter `wp_password_generator_args` which allows to modify the args supplied to the built-in `wp_generate_password()` function
-* Fixed bug where a "0" was always being appended to the end of generated passwords (thank you to Rig Kruger and [Peter Berce](http://berce.us/) for bringing it to my attention!)
+* Fixed bug where a "0" was always being appended to the end of generated passwords (thank you to [Rig Kruger](http://rod1.org/) and [Peter Berce](http://berce.us/) for bringing it to my attention!)
 * Added a languages directory and loaded the text-domain so translations are applied automatically
-* Added Dutch translation (thanks David Mosterd of (CodPress)[http://www.codepress.nl/] of CodePress)
+* Added Dutch translation (thanks David Mosterd of [CodePress](http://www.codepress.nl/))
 * Fixed copy-paste error when assigning min/max-length params for passwords (thanks [Robert Paprocki](https://github.com/p0pr0ck5))
 
 ### 2.5
@@ -124,7 +124,7 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 ### 2.3
 * Now works in WordPress installations that don't use the standard `wp-content/` directory location
-* Improved javascript performance
+* Improved JavaScript performance
 
 ### 2.2
 * Use the pluggable wp_generate_password() function to handle password creation rather than WP Password Generator's internal function
