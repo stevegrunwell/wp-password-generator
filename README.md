@@ -1,5 +1,7 @@
 # WP Password Generator
 
+> **Notice:** With the [native password generation features being introduced in WordPress 4.3](https://make.wordpress.org/core/2015/07/28/passwords-strong-by-default/) this plugin is no longer necessary to generate strong passwords.
+
 When administrators create new users through the WordPress admin interface (wp-admin/user-new.php), they are forced to come up with a password for the new user. The administrator is faced with a choice: use a separate password generator app or waste precious time coming up with a clever password only one person will ever see.
 
 WP Password Generator takes the hassle out of creating new user passwords. Simply click "Generate Password" and your user has a unique, 7-16 character password. The password generator function is also totally pluggable, so you can easily change the way passwords are generated in order to meet your standards.
@@ -91,6 +93,9 @@ WordPress Multisite already generates random passwords for new Multisite users s
 
 
 ## Changelog
+
+### 2.8
+* [Final version of the plugin](https://stevegrunwell.com/blog/sunsetting-wp-password-generator), as it's no longer necessary as of WordPress 4.3.
 
 ### 2.7.1
 * Tested with WordPress 4.2
