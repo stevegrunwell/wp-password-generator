@@ -3,7 +3,7 @@
  * Plugin Name: WP Password Generator
  * Plugin URI: https://stevegrunwell.com/wp-password-generator
  * Description: Generates a random password when creating a new WP user
- * Version: 2.8
+ * Version: 2.8.1
  * Author: Steve Grunwell
  * Author URI: https://stevegrunwell.com
  * License: GPL2
@@ -30,7 +30,7 @@ function wp_password_generator_init() {
 	);
 
 	// I didn't want to do a version check here, but they generate one password per load
-	if ( version_compare( '4.3', $wp_version, '>=' ) ) {
+	if ( version_compare( '4.3', floatval( $wp_version ), '<=' ) ) {
 		add_action( 'admin_notices', 'wp_password_generator_deprecation_notice' );
 
 	} else {
